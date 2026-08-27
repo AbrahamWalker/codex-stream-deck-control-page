@@ -1,0 +1,37 @@
+[
+  {"position":"0,0","type":"page.previous","label":"PREVIOUS","shortcut":"PAGE","category":"navigation"},
+  {"position":"1,0","type":"hotkey","label":"NEW\nCHAT","shortcut":"CTRL N","category":"create","key":{"vkey":78,"qt":78,"native":78,"ctrl":true}},
+  {"position":"2,0","type":"hotkey","label":"TEMP\nCHAT","shortcut":"CTRL SHIFT N","category":"create","key":{"vkey":78,"qt":78,"native":78,"ctrl":true,"shift":true}},
+  {"position":"3,0","type":"hotkey","label":"COMMANDS","shortcut":"CTRL K","category":"create","key":{"vkey":75,"qt":75,"native":75,"ctrl":true}},
+  {"position":"4,0","type":"hotkey","label":"MODEL\nPICKER","shortcut":"CTRL SHIFT M","category":"create","key":{"vkey":77,"qt":77,"native":77,"ctrl":true,"shift":true}},
+  {"position":"5,0","type":"hotkey","label":"VOICE\nCHAT","shortcut":"CTRL SHIFT V","category":"voice","key":{"vkey":86,"qt":86,"native":86,"ctrl":true,"shift":true}},
+  {"position":"6,0","type":"hotkey","label":"DICTATE","shortcut":"CTRL SHIFT D","category":"voice","key":{"vkey":68,"qt":68,"native":68,"ctrl":true,"shift":true}},
+  {"position":"7,0","type":"page.next","label":"NEXT","shortcut":"PAGE","category":"navigation"},
+
+  {"position":"0,1","type":"text","label":"VERIFY\nWORK","shortcut":"CHECK RESULT","category":"prompt","text":"Please verify your work and confirm the result before proceeding."},
+  {"position":"1,1","type":"text","label":"PROCEED","shortcut":"CURRENT PLAN","category":"prompt","text":"Proceed with the current plan."},
+  {"position":"2,1","type":"text","label":"STATUS","shortcut":"CONCISE UPDATE","category":"prompt","text":"Give me a concise status update on the current task."},
+  {"position":"3,1","type":"text","label":"NEXT\nSTEP","shortcut":"WHAT NEXT?","category":"prompt","text":"What should we do next?"},
+  {"position":"4,1","type":"text","label":"QUESTIONS","shortcut":"ASK ME FIRST","category":"prompt","text":"Do you have any questions for me before continuing?"},
+  {"position":"5,1","type":"text","label":"TELL ME\nMORE","shortcut":"EXPAND","category":"prompt","text":"Tell me more about that."},
+  {"position":"6,1","type":"text","label":"KEEP\nGOING","shortcut":"UNTIL COMPLETE","category":"prompt","text":"Keep going until the task is complete."},
+  {"position":"7,1","type":"hotkey","label":"ANNOTATE","shortcut":"CTRL +","category":"annotate","key":{"vkey":187,"qt":43,"native":187,"ctrl":true,"shift":true}},
+
+  {"position":"0,2","type":"hotkey","label":"BACK","shortcut":"CTRL [","category":"navigation","key":{"vkey":219,"qt":91,"native":219,"ctrl":true}},
+  {"position":"1,2","type":"hotkey","label":"NEXT\nCHAT","shortcut":"CTRL SHIFT ]","category":"navigation","key":{"vkey":221,"qt":93,"native":221,"ctrl":true,"shift":true}},
+  {"position":"2,2","type":"hotkey","label":"NEEDS\nATTN","shortcut":"CTRL ALT A","category":"navigation","key":{"vkey":65,"qt":65,"native":65,"ctrl":true,"alt":true}},
+  {"position":"3,2","type":"hotkey","label":"SIDEBAR","shortcut":"CTRL B","category":"panel","key":{"vkey":66,"qt":66,"native":66,"ctrl":true}},
+  {"position":"4,2","type":"hotkey","label":"FILE\nTREE","shortcut":"CTRL SHIFT E","category":"panel","key":{"vkey":69,"qt":69,"native":69,"ctrl":true,"shift":true}},
+  {"position":"5,2","type":"hotkey","label":"BROWSER\nPANEL","shortcut":"CTRL SHIFT B","category":"panel","key":{"vkey":66,"qt":66,"native":66,"ctrl":true,"shift":true}},
+  {"position":"6,2","type":"hotkey","label":"TERMINAL","shortcut":"CTRL `","category":"panel","key":{"vkey":192,"qt":96,"native":192,"ctrl":true}},
+  {"position":"7,2","type":"hotkey","label":"REVIEW\nPANEL","shortcut":"CTRL ALT B","category":"panel","key":{"vkey":66,"qt":66,"native":66,"ctrl":true,"alt":true}},
+
+  {"position":"0,3","type":"hotkey","label":"SEARCH\nFILES","shortcut":"CTRL P","category":"files","key":{"vkey":80,"qt":80,"native":80,"ctrl":true}},
+  {"position":"1,3","type":"hotkey","label":"OPEN\nFOLDER","shortcut":"CTRL O","category":"files","key":{"vkey":79,"qt":79,"native":79,"ctrl":true}},
+  {"position":"2,3","type":"hotkey","label":"RENAME\nCHAT","shortcut":"CTRL ALT R","category":"chat","key":{"vkey":82,"qt":82,"native":82,"ctrl":true,"alt":true}},
+  {"position":"3,3","type":"hotkey","label":"COPY\nLINK","shortcut":"CTRL ALT L","category":"copy","key":{"vkey":76,"qt":76,"native":76,"ctrl":true,"alt":true}},
+  {"position":"4,3","type":"hotkey","label":"COPY\nSESSION ID","shortcut":"CTRL ALT C","category":"copy","key":{"vkey":67,"qt":67,"native":67,"ctrl":true,"alt":true}},
+  {"position":"5,3","type":"hotkey","label":"COPY\nFOLDER","shortcut":"CTRL SHIFT C","category":"copy","key":{"vkey":67,"qt":67,"native":67,"ctrl":true,"shift":true}},
+  {"position":"6,3","type":"hotkey","label":"SETTINGS","shortcut":"CTRL ,","category":"system","key":{"vkey":188,"qt":44,"native":188,"ctrl":true}},
+  {"position":"7,3","type":"hotkey","label":"SHORTCUTS","shortcut":"CTRL /","category":"system","key":{"vkey":191,"qt":47,"native":191,"ctrl":true}}
+]

@@ -1,0 +1,8 @@
+backups/
+release/
+.installer-test/
+*.zip
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

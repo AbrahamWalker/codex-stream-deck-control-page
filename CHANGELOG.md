@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 - 2026-08-27
+
+- Fixed Windows PowerShell 5 handling of the 32-item layout.
+- Added a clean-profile installation and update test on GitHub Actions.
+
 ## 1.0.0 - 2026-08-27
 
 - Added a complete 32-key Stream Deck XL Codex control page.

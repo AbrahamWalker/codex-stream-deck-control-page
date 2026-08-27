@@ -22,7 +22,7 @@ This layout is made for the Stream Deck XL's 8 by 4 key grid. It does not curren
 
 ## Install
 
-1. Download `Codex-Stream-Deck-Control-Page-v1.0.0.zip` from the latest GitHub Release.
+1. Download the ZIP file attached to the latest GitHub Release.
 2. Extract the ZIP file.
 3. Double-click **Install Codex Control Page.cmd**.
 4. If Stream Deck is open, close it when the installer asks and then press Enter.

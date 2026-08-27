@@ -176,7 +176,7 @@ $pageRoot = Join-Path $profileRoot "Profiles\$pageId"
 $imageRoot = Join-Path $pageRoot "Images"
 New-Item -ItemType Directory -Path $imageRoot -Force | Out-Null
 
-$layout = @(Read-JsonFile $layoutPath)
+$layout = Read-JsonFile $layoutPath
 if ($layout.Count -ne 32) { throw "The bundled layout is incomplete. Expected 32 buttons but found $($layout.Count)." }
 $actions = [ordered]@{}
 foreach ($item in $layout) {

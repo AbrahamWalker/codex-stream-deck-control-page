@@ -23,3 +23,47 @@ jobs:
           $errors = $null
           [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path 'installer/install.ps1'), [ref]$null, [ref]$errors)
           if ($errors.Count) { $errors | Format-List | Out-String | Write-Error }
+      - name: Test clean installation and update
+        shell: powershell
+        run: |
+          $fixture = Join-Path $env:RUNNER_TEMP 'codex-stream-deck-fixture'
+          $profileName = 'TEST.sdProfile'
+          $profileRoot = Join-Path $fixture "Elgato/StreamDeck/ProfilesV3/$profileName"
+          $existingPage = '00000000-0000-0000-0000-000000000001'
+          $existingPageRoot = Join-Path $profileRoot "Profiles/$existingPage"
+          New-Item -ItemType Directory -Path (Join-Path $existingPageRoot 'Images') -Force | Out-Null
+          @{
+            Device = @{ Model = '20GAT9901'; UUID = 'TEST-DEVICE' }
+            Name = 'Default Profile'
+            Pages = @{ Current = $existingPage; Default = $existingPage; Pages = @($existingPage) }
+            Version = '3.0'
+          } | ConvertTo-Json -Depth 20 -Compress | Set-Content -LiteralPath (Join-Path $profileRoot 'manifest.json') -Encoding utf8
+          @{
+            Controllers = @(@{ Actions = @{}; Type = 'Keypad' })
+            Icon = ''
+            Name = 'Existing Page'
+          } | ConvertTo-Json -Depth 20 -Compress | Set-Content -LiteralPath (Join-Path $existingPageRoot 'manifest.json') -Encoding utf8
+
+          $originalAppData = $env:APPDATA
+          $env:APPDATA = $fixture
+          $backupRoot = Join-Path $env:RUNNER_TEMP 'codex-stream-deck-backups'
+          try {
+            & ./installer/install.ps1 -ProfileDirectory $profileName -BackupDirectory $backupRoot -SkipProcessCheck -NoRestart
+            $profile = Get-Content -LiteralPath (Join-Path $profileRoot 'manifest.json') -Raw | ConvertFrom-Json
+            if (@($profile.Pages.Pages).Count -ne 2) { throw 'The installer did not preserve the existing page and add exactly one Codex page.' }
+            if (-not (@($profile.Pages.Pages) -contains $existingPage)) { throw 'The existing page was removed.' }
+            $codexPage = [string]$profile.Pages.Current
+            $codexRoot = Join-Path $profileRoot "Profiles/$codexPage"
+            $codex = Get-Content -LiteralPath (Join-Path $codexRoot 'manifest.json') -Raw | ConvertFrom-Json
+            if ([string]$codex.Name -ne 'Codex Controls') { throw 'The installed page name is incorrect.' }
+            if (@($codex.Controllers[0].Actions.psobject.Properties).Count -ne 32) { throw 'The installed page does not contain 32 actions.' }
+            if (@(Get-ChildItem -LiteralPath (Join-Path $codexRoot 'Images') -Filter 'CODEX-*.png').Count -ne 32) { throw 'The installed page does not contain 32 images.' }
+
+            Start-Sleep -Milliseconds 1100
+            & ./installer/install.ps1 -ProfileDirectory $profileName -BackupDirectory $backupRoot -SkipProcessCheck -NoRestart
+            $updatedProfile = Get-Content -LiteralPath (Join-Path $profileRoot 'manifest.json') -Raw | ConvertFrom-Json
+            if (@($updatedProfile.Pages.Pages).Count -ne 2) { throw 'Updating created a duplicate Codex page.' }
+            if (@(Get-ChildItem -LiteralPath $backupRoot -Directory).Count -ne 2) { throw 'Both installer runs did not create backups.' }
+          } finally {
+            $env:APPDATA = $originalAppData
+          }
